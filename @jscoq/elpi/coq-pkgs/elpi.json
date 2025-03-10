@@ -1,0 +1,20 @@
+{
+  "name": "elpi",
+  "deps": [],
+  "archive": "elpi.coq-pkg",
+  "pkgs": [
+    {
+      "pkg_id": [ "elpi" ],
+      "vo_files": [ [ "elpi.vo", null ] ],
+      "cma_files": [ [ "elpi_plugin@cma", null ] ]
+    }
+  ],
+  "modDeps": {
+    "elpi.elpi": [
+      "Coq.Init.Ltac",
+      "Coq.Bool.Bool",
+      "Coq.Floats.PrimFloat",
+      "Coq.Numbers.Cyclic.Int63.PrimInt63"
+    ]
+  }
+}

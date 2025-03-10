@@ -1,0 +1,1 @@
+{"name":"@jscoq/stdpp","description":"std++ for jsCoq","version":"0.16.0","files":["README.md","coq-pkgs"],"repository":{"type":"git","url":"github:jscoq/addon-stdpp"},"license":"AGPL-3.0-or-later"}

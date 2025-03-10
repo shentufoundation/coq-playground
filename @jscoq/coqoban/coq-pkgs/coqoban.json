@@ -1,0 +1,13 @@
+{
+  "name": "coqoban",
+  "deps": [],
+  "archive": "coqoban.coq-pkg",
+  "pkgs": [
+    {
+      "pkg_id": [ "Coqoban" ],
+      "vo_files": [ [ "Coqoban_engine.vo", null ], [ "Coqoban_levels.vo", null ] ],
+      "cma_files": []
+    }
+  ],
+  "modDeps": { "Coqoban.Coqoban_levels": [ "Coqoban.Coqoban_engine" ] }
+}

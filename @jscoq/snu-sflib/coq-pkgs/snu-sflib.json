@@ -1,0 +1,26 @@
+{
+  "name": "snu-sflib",
+  "deps": [],
+  "archive": "snu-sflib.coq-pkg",
+  "pkgs": [
+    {
+      "pkg_id": [ "sflib" ],
+      "vo_files": [ [ "example.vo", null ], [ "sflib.vo", null ] ],
+      "cma_files": []
+    }
+  ],
+  "modDeps": {
+    "sflib.example": [ "sflib.sflib" ],
+    "sflib.sflib": [
+      "Coq.Bool.Bool",
+      "Ltac2.Bool",
+      "Coq.Lists.List",
+      "Ltac2.List",
+      "Coq.Arith.Arith",
+      "Coq.ZArith.ZArith",
+      "Coq.Strings.String",
+      "Ltac2.String",
+      "Coq.Program.Program"
+    ]
+  }
+}
