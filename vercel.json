@@ -16,6 +16,13 @@
       }
     },
     {
+      "src": "/@jscoq/(.*)",
+      "dest": "/@jscoq/$1",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
       "src": "/",
       "dest": "/scratchpad.html"
     },
