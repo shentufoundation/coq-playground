@@ -1,5 +1,14 @@
 {
     "version": 2,
+    "builds": [
+        {
+            "src": "/*",
+            "use": "@vercel/static",
+            "config": {
+                "include": ["node_modules/@jscoq/**"]
+            }
+        }
+    ],
     "routes": [
         {
             "src": "/coq-pkgs/openmath\\.(.*)",
