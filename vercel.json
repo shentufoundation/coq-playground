@@ -1,39 +1,45 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/(.*\\.(js|css|png|svg|cjs|gif))",
-      "dest": "/$1",
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/jscoq/(coq-pkgs|docs)/(.*)",
-      "dest": "/jscoq/$1/$2",
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/@jscoq/(.*)",
-      "dest": "/@jscoq/$1",
-      "headers": {
-        "Access-Control-Allow-Origin": "*"
-      }
-    },
-    {
-      "src": "/",
-      "dest": "/scratchpad.html"
-    },
-    {
-      "src": "/scratchpad.html",
-      "dest": "/scratchpad.html"
-    },
-    {
-      "src": "/(.*)",
-      "status": 404
-    }
-  ]
+    "version": 2,
+    "routes": [
+        {
+            "src": "/(.*\\.(js|css|png|svg|cjs|gif|html))",
+            "dest": "/$1",
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
+        },
+        {
+            "src": "/node_modules/@jscoq/(.*)",
+            "dest": "/node_modules/@jscoq/$1",
+            "headers": {
+              "Access-Control-Allow-Origin": "*"
+            }
+        },
+        {
+            "src": "/(coq-pkgs|docs)/(.*)",
+            "dest": "/$1/$2",
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
+        },
+        {
+            "src": "/",
+            "dest": "/playground.html"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/playground(.*)",
+            "headers": [
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "GET, POST, OPTIONS"
+                }
+            ]
+        }
+    ]
 }
-

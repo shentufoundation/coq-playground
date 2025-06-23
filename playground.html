@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>JsCoq Playground</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+    <link rel="icon" href="frontend/classic/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="dist/frontend/index.css"/>
+    <link rel="stylesheet" type="text/css" href="frontend/classic/css/coq-dark.css"/>
+  </head>
+
+<body class="jscoq-main">
+  <div id="ide-wrapper"> </div>
+
+  <script type="module">
+    import { JsCoq } from './dist/frontend/index.js';
+
+    if (!localStorage['scratchpad.last_filename'])
+        setTimeout(() => document.body.classList.add('welcome'), 1500);
+
+    var jscoq_ids  = ['#ide-wrapper'];
+    var jscoq_opts = {
+        implicit_libs: false,
+        focus: false,
+        editor: { mode: { 'company-coq': true }, theme: 'blackboard' },
+        theme: 'dark',
+        all_pkgs: ['coq', 'mathcomp', 'openmath']
+    };
+
+    JsCoq.start(jscoq_ids, jscoq_opts).then(res => {
+        /* Global reference */
+        window.coq = res;
+        if (localStorage.getItem('coqcode')) {
+            coq.provider.load(JSON.parse(localStorage.getItem('coqcode')), 'playground');
+        }
+    });
+  </script>
+</body>
+</html>
