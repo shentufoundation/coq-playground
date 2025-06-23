@@ -5,7 +5,7 @@
             "src": "/*",
             "use": "@vercel/static",
             "config": {
-                "include": ["node_modules/@jscoq/**"]
+                "include": ["**/*"]
             }
         }
     ],
