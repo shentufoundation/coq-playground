@@ -7,6 +7,14 @@
     <link rel="icon" href="frontend/classic/images/favicon.png">
     <link rel="stylesheet" type="text/css" href="dist/frontend/index.css"/>
     <link rel="stylesheet" type="text/css" href="frontend/classic/css/coq-dark.css"/>
+    <style>
+      .cm-s-blackboard.CodeMirror {
+        background: radial-gradient(100% 100% at 50% 0,#212023 0,#1b1a1d 100%);
+      }
+      .jscoq-theme-dark#panel-wrapper {
+        background: radial-gradient(100% 100% at 50% 0,#212023 0,#1b1a1d 100%);
+      }
+    </style>
   </head>
 
 <body class="jscoq-main">
@@ -15,8 +23,7 @@
   <script type="module">
     import { JsCoq } from './dist/frontend/index.js';
 
-    if (!localStorage['scratchpad.last_filename'])
-        setTimeout(() => document.body.classList.add('welcome'), 1500);
+    var sp = new URLSearchParams(location.search), code_key = sp.get('ck') || 'coqcode';
 
     var jscoq_ids  = ['#ide-wrapper'];
     var jscoq_opts = {
@@ -30,9 +37,12 @@
     JsCoq.start(jscoq_ids, jscoq_opts).then(res => {
         /* Global reference */
         window.coq = res;
-        if (localStorage.getItem('coqcode')) {
-            coq.provider.load(JSON.parse(localStorage.getItem('coqcode')), 'playground');
+        if (localStorage.getItem(code_key)) {
+            coq.provider.load(JSON.parse(localStorage.getItem(code_key)), 'playground');
         }
+    });
+    window.addEventListener('beforeunload', () => {
+        localStorage.setItem(code_key, JSON.stringify(coq.provider.snippets[0].editor.getValue()));
     });
   </script>
 </body>
